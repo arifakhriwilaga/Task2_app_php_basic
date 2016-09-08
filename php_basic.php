@@ -28,8 +28,44 @@
    public function defend() {
      $blood = $blood - 30;
    }
+
+   public function cek_players() 
+   {
+      for ($i = 0; $i <= 1;)
+      {
+      echo "Min player 2;
+              # How much player:";
+              fscanf(STDIN, "%s\n", $mode);
+      }
+
+          if ($i <=3 ) 
+            { 
+              echo "
+              # ============================== #
+              # Welcome to the Battle Arena #
+              # ============================== #
+              # New Player #
+              # Put Player 1 Name:";
+              // input name
+              fscanf(STDIN, "%s\n", $player_name_1);
+              $players[0] = new Player ($player_name_1);
+              echo "var_dump($player_name_1)";
+          if ($player_name_1 == $players[0])
+              {
+              echo "
+              # Put Player 2 Name:"; 
+              fscanf(STDIN, "%s\n", $player_name_2);
+              $players [$player_name_2] = new Player ($player_name_2);
+              echo "var_dump($player_name_2)";
+              }
+          else
+              {
+                echo "null";                   
+              }
+            }
  }
- 
+ }
+
  $players = [];
 
 echo 
@@ -50,18 +86,31 @@ echo
       echo"\n";
           if ($mode =="new") 
           {
-            echo "
+             echo "             
+              # How much player:";
+              fscanf(STDIN, "%s\n", $mode);
+              echo"\n";
+
+          for ($i = 0; $i < 1;) 
+          {
+              echo "Min player 2;
+              # How much player:";
+              fscanf(STDIN, "%s\n", $mode);
+          
+
+          if ($i <=3 ) 
+            { 
+              echo "
               # ============================== #
               # Welcome to the Battle Arena #
               # ============================== #
               # New Player #
               # Put Player 1 Name:";
-            // input name
+              // input name
               fscanf(STDIN, "%s\n", $player_name_1);
-              $players [$player_name_1] = new Player ($player_name_1);
+              $players[0] = new Player ($player_name_1);
               echo "var_dump($player_name_1)";
-
-              if ($player_name_1 == $players[0])
+          if ($player_name_1 == $players[0])
               {
               echo "
               # Put Player 2 Name:"; 
@@ -69,10 +118,15 @@ echo
               $players [$player_name_2] = new Player ($player_name_2);
               echo "var_dump($player_name_2)";
               }
-              else
-                    {
-                      echo "string";                   
-                    }
+          else
+              {
+                echo "null";                   
+              }
+                             
+            }
+                       }
+               
+           
            
             
               
@@ -91,7 +145,10 @@ echo
             when pressing enter out the results:
             # ============================== #
             # Welcome to the Battle Arena #
-            # ------------------------------------------------- ---- #";
+            # ------------------------------------------------- ---- #
+            Battle Start:
+            who will attack: <nama_player_1>
+            who attacked: <nama_player_2>";
           }
 
 
