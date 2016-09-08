@@ -1,40 +1,40 @@
 <?php 
- class Player {
-   private $name, $blood, $manna;
-   
-   public function __construct($new_name) {
-     $this->name = $new_name;
-     $this->blood = 100;
-     $this->mana = 80;
-   }
-   
-   public function get_name() {
-     return $this->name;
-   }
-   public function set_name($input_name) {
-     $this->name = $input_name;
-   }
-   public function get_blood() {
-     return $this->blood;
-   }
-   public function get_mana() {
-     return $this->mana;
-   }
-   
-   public function attack() {
-     $mana = $mana - 10;
-   }
-   
-   public function defend() {
-     $blood = $blood - 30;
-   }
+class Player 
+  {
+    private $name, $blood, $manna;
 
- }
+    public function __construct($new_name) 
+      {
+        $this->name = $new_name;
+        $this->blood = 100;
+        $this->manna = 50;
+      }
 
- 
- 
+    public function get_name() 
+      {
+        return $this->name;
+      }
 
- $players = [];
+    public function get_blood ()
+      {
+        return $this->blood;
+      }
+    public function get_manna()
+      {
+        return $this->manna;
+      }
+    public function attack() 
+      {
+        $this->manna = $this->manna - 15;
+      }
+    public function defend() 
+      {
+        $this->blood = $this->blood - 20;
+      }
+  } 
+
+
+$players = [];
 
 echo "
 # ============================== #
@@ -49,84 +49,96 @@ echo "
 # * Max player 2 or 3 #
 # ------------------------------------------------- ---- #
 # Mode: ";
-// input mode player
-fscanf(STDIN, "%s\n", $mode);
+// input mode game
+fscanf(STDIN, "%s\n", $game_play);
 echo"\n";
-  if ($mode =="new") 
-  {
-  echo "             
+if ($game_play =="new") 
+{
+echo " 
+# Current Player: #
+# - #
+# * Max player 2 or 3 #
+# ------------------------------------------------- ---- #           
 # How much player:";
-    fscanf(STDIN, "%s\n", $mode);
-    echo"\n";
-      for ($i = $mode; $mode <= 1;) 
-      {
-        echo $i->check();
-      for ($mode = 2; $mode < 3;) 
-      { 
-      echo "
+fscanf(STDIN, "%s\n", $much_players);
+echo"\n";
+// $players [$much_players] = new Player($much_players);
+if ($much_players <= 3 && $much_players >=2 ) 
+{
+echo " 
 # ============================== #
 # Welcome to the Battle Arena #
-# ============================== #
-# New Player #
-# Put Player 1 Name:";
-
-      // input name
-      fscanf(STDIN, "%s\n", $player_name_1);
-      $players[0] = new Player ($player_name_1);
-      echo "var_dump($player_name_1)";
-        if ($player_name_1 == $players[0])
-           {
-            echo "
-# Put Player 2 Name:"; 
-              fscanf(STDIN, "%s\n", $player_name_2);
-              $players [$player_name_2] = new Player ($player_name_2);
-            echo "var_dump($player_name_2)";
-            }
-        else
-        {
-          echo "null";                   
-        }
-                                   
-      }
+# ------------------------------------------------- ---- #
+# Description: #
+# Current Player : " . $much_players . "         
+# ------------------------------------------------- ---- #";
+for ($i=0; $i < $much_players ; $i++) 
+{ 
+echo"\n";
+echo "# Put Player Name:";
+fscanf(STDIN, "%s\n", $player_name);
+$players [$player_name] = new Player($player_name);
+echo "var_dump($player_name)";
 }
-               
-           
-           
-            
-              
+echo"\n";
+echo "Start now?";
+fscanf(STDIN, "%s\n", $mode);
+if ($mode == "Start") 
+{
+  echo"\n";
+  echo " 
+    # Attack:";
+    fscanf(STDIN, "%s\n", $attacker);
+foreach ($players as $key => $value) 
+{
+  if ($attacker == $value->get_name()) 
+  {
+    $value->get_manna();
+    $value->attack();
   }
+}
 
-        else
-        {
-            echo "Your type incorrect";
-        }
+  echo"\n";
+  echo " 
+    # Defend:";
+    fscanf(STDIN, "%s\n", $defender);
+foreach ($players as $key => $value) 
+{
+  if ($defender == $value->get_name()) 
+  {
+    $value->get_blood();
+    $value->defend();
+  echo"\n";
+  echo "Attacker :". $attacker ;
+  echo "Defender :". $defender;
+  echo"\n";
+  }
+} 
 
+foreach ($players as $key => $value) 
+{
+  echo $value->get_name() .", manna : " .$value->get_manna() .", blood : " .$value->get_blood();
+  echo"\n";
+}           
+}
 
-// $player = [$input] new Player ($input);
-// echo "$player";
-  // if
-  // {
-  //   $input="new";
-  //   {
+else
+{
+echo "Incorrect type";
+}
 
-  //   }
-  // }
+}
+else
+{
+echo "Incorrect";
+}
 
-      # Current Player: #
-      # - #
-      # * Max player 2 or 3 #
-# ============================== #;
-  // public $players = [];
+}
 
-  // $players["ujang"] = new Player("ujang");
-  // $players["cecep"] = new Player("cecep");
-  
-  // $players["ujang"]->get_blood();
-  
-  // //ujang will decrease the mana with -10
-  // $players["ujang"]->attack();
-  // //cecep will decrease the blood with -30
-  // $players["cecep"]->defend();
- 
- ?>
+else
+{
+echo "Incorrect mode";
+}
+
+?>
 
