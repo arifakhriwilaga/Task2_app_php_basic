@@ -1,6 +1,6 @@
 <?php 
  class Player {
-   private $name, $blood, $mana;
+   private $name, $blood, $manna;
    
    public function __construct($new_name) {
      $this->name = $new_name;
@@ -58,21 +58,17 @@ echo
               # Put Player 1 Name:";
             // input name
               fscanf(STDIN, "%s\n", $player_name_1);
-              $players [$player_1] = new Player ($player_name_1);
+              $players [$player_name_1] = new Player ($player_name_1);
               echo "var_dump($player_name_1)";
-              
-              if ($players == [1])
+
+              if ($player_name_1 == $players[0])
               {
               echo "
               # Put Player 2 Name:"; 
-             fscanf(STDIN, "%s\n", $player_name_2);
-             $players [$player_2] = new Player ($player_name_2);
-                        # - #
-                        # * Max player 2 or 3 #
-                        # ----------------------------------------------------- #
-                        # How much player:";
-                        fscanf(STDIN, "%s\n", $much_player);
-                    }
+              fscanf(STDIN, "%s\n", $player_name_2);
+              $players [$player_name_2] = new Player ($player_name_2);
+              echo "var_dump($player_name_2)";
+              }
               else
                     {
                       echo "string";                   
