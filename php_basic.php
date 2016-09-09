@@ -7,7 +7,7 @@ class Player
       {
         $this->name = $new_name;
         $this->blood = 100;
-        $this->manna = 50;
+        $this->manna = 75;
       }
 
     public function get_name() 
@@ -29,11 +29,11 @@ class Player
       }
     public function defend() 
       {
-        $this->blood = $this->blood - 20;
+        $this->blood = $this->blood - 25;
       }
   } 
 
-
+$int = 1;
 $players = [];
 
 echo "
@@ -56,7 +56,6 @@ if ($game_play =="new")
   {
 echo " 
 # Current Player: #
-# - #
 # * Max player 2 or 3 #
 # ------------------------------------------------- ---- #           
 # How much player:";
@@ -78,7 +77,6 @@ echo"\n";
 echo "# Put Player Name:";
 fscanf(STDIN, "%s\n", $player_name);
 $players [$player_name] = new Player($player_name);
-echo "var_dump($player_name)";
     }
 
 echo"\n";
@@ -86,6 +84,7 @@ echo "Start now?";
 fscanf(STDIN, "%s\n", $mode);
   if ($mode == "Start") 
   {
+    do {
     echo"\n";
     echo " 
 # Attack:";
@@ -109,24 +108,44 @@ fscanf(STDIN, "%s\n", $mode);
             $value->get_blood();
             $value->defend();
 echo"\n";
-echo "Attacker :". $attacker ;
+echo "
+# ============================== #
+
+# Welcome to the Battle Arena #
+# ============================== #
+# Description: #
+# Current Player: ". count($players) ."#
+# ------------------------------------------------- ---- #
+Attacker :". $attacker;
 echo "Defender :". $defender;
 echo"\n";
           }
       } 
 
+      
       foreach ($players as $key => $value) 
       {
         echo $value->get_name() .", manna : " .$value->get_manna() .", blood : " .$value->get_blood();
-        echo"\n";
-      }           
-  }
+        echo"\n";   
+      }  
 
+      foreach ($players as $key => $value) 
+      
+      {
+      if ($value->get_manna() < 1 || $value->get_blood() < 1) 
+        {
+          echo "GAME OVER !";
+          echo die();
+        }
+      }
+    }
+    while($int>=0);
+}
 else
   {
     echo "Incorrect type";
   }
-  
+
     }
 
   else
